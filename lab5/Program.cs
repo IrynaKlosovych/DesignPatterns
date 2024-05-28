@@ -89,6 +89,9 @@ html.Show();
 ClearContent();
 Console.WriteLine("Task4\n");
 
+var p2 = new LightElementNode("p", (int)DisplayType.Block, (int)IsPaired.Paired);
+Console.WriteLine();
+var newText = new LightTextNode("some text for task 4");
 
 ClearContent();
 Console.WriteLine("Task5\n");

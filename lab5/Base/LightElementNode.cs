@@ -36,6 +36,7 @@ namespace lab5.Base
             CSSList = cssClasses ?? new List<string>();
             children = new List<LightNode>();
             state = new VisibleState(this);
+            this.TemplateMethod();
         }
         private bool CheckIsPaired()
         {
@@ -134,6 +135,26 @@ namespace lab5.Base
         public void Show()
         {
             this.state.Show();
+        }
+        protected override void OnCreated()
+        {
+            base.OnCreated();
+            Console.WriteLine("NodeElement is on created");
+        }
+        protected override void OnInserted()
+        {
+            base.OnInserted();
+            Console.WriteLine("NodeElement is on inserted");
+        }
+        protected override void OnRemoved()
+        {
+            base.OnRemoved();
+            Console.WriteLine("NodeElement is on removed");
+        }
+        protected override void OnStylesApplied()
+        {
+            base.OnStylesApplied();
+            Console.WriteLine("NodeElement is on styles applied");
         }
     }
 }

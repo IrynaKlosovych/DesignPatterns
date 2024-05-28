@@ -12,6 +12,7 @@ namespace lab5.Base
         public LightTextNode(string text)
         {
             this.text = text;
+            this.TemplateMethod();
         }
 
         public override void OutterLightHTML()
@@ -22,6 +23,21 @@ namespace lab5.Base
         public override void ShortAbout()
         {
             Console.WriteLine(text);
+        }
+        protected override void OnCreated()
+        {
+            base.OnCreated();
+            Console.WriteLine("TextElement is on created");
+        }
+        protected override void OnInserted()
+        {
+            base.OnInserted();
+            Console.WriteLine("TextElement is on inserted");
+        }
+        protected override void OnTextRendered()
+        {
+            base.OnTextRendered();
+            Console.WriteLine("TextElement is on text added");
         }
     }
 }
