@@ -1,4 +1,5 @@
 ﻿using lab5.Base;
+using lab5.Command;
 using lab5.Iterator;
 
 Console.WriteLine("Task1\n");
@@ -50,7 +51,44 @@ static void logEach(IIterator iterator)
             ((LightNode)nextNode).ShortAbout();
         }
     };
+    iterator.Reset();
 }
+
+ClearContent();
+Console.WriteLine("Task2\n");
+
+
+ICommand edit = new EditTextCommand(textTitleHead, "Updated Title by Command");
+ICommand replace = new ReplaceNodeCommand(body, p, br);
+
+Invoker invoker = new Invoker(edit, replace);
+invoker.Editor();
+invoker.Replacer();
+
+Console.WriteLine("Update\n");
+titleHead.OutterLightHTML();
+Console.WriteLine();
+body.OutterLightHTML();
+
+invoker.EditorUndo();
+invoker.ReplacerUndo();
+
+Console.WriteLine("\nUndo\n");
+titleHead.OutterLightHTML();
+Console.WriteLine();
+body.OutterLightHTML();
+
+ClearContent();
+Console.WriteLine("Task3\n");
+
+
+ClearContent();
+Console.WriteLine("Task4\n");
+
+
+ClearContent();
+Console.WriteLine("Task5\n");
+
 
 ClearContent();
 
