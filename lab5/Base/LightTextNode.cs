@@ -1,4 +1,5 @@
-﻿using System;
+﻿using lab5.Visitor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace lab5.Base
 {
-    public class LightTextNode : LightNode
+    public class LightTextNode : LightNode, IVisitable
     {
         public string text {  get; set; }
         public LightTextNode(string text)
@@ -38,6 +39,10 @@ namespace lab5.Base
         {
             base.OnTextRendered();
             Console.WriteLine("TextElement is on text added");
+        }
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }
