@@ -81,6 +81,10 @@ body.OutterLightHTML();
 ClearContent();
 Console.WriteLine("Task3\n");
 
+html.Show();
+html.Hide();
+html.Hide();
+html.Show();
 
 ClearContent();
 Console.WriteLine("Task4\n");

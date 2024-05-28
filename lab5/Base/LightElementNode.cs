@@ -1,4 +1,5 @@
 ﻿using lab5.Iterator;
+using lab5.State;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,8 +20,9 @@ namespace lab5.Base
         Paired,
         Unpaired
     }
-    public class LightElementNode : LightNode, IInnerLightHTML, ILightHTMLCollection
+    public class LightElementNode : LightNode, IInnerLightHTML, ILightHTMLCollection, IVisibilityState
     {
+        private IVisibilityState state;
         protected List<LightNode> children;
         protected string TagName;
         protected int TagDisplayType;
@@ -33,6 +35,7 @@ namespace lab5.Base
             TagIsPaired = isPaired;
             CSSList = cssClasses ?? new List<string>();
             children = new List<LightNode>();
+            state = new VisibleState(this);
         }
         private bool CheckIsPaired()
         {
@@ -112,6 +115,25 @@ namespace lab5.Base
         public override void ShortAbout()
         {
             Console.WriteLine(TagName);
+        }
+        public string GetTagName()
+        {
+            return TagName;
+        }
+
+        public void ChangeState(IVisibilityState state)
+        {
+            this.state = state;
+        }
+
+        public void Hide()
+        {
+            this.state.Hide();
+        }
+
+        public void Show()
+        {
+            this.state.Show();
         }
     }
 }
