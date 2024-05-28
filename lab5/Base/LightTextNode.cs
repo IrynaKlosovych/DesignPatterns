@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab3.Composite
+namespace lab5.Base
 {
     public class LightTextNode : LightNode
     {
@@ -15,6 +15,11 @@ namespace lab3.Composite
         }
 
         public override void OutterLightHTML()
+        {
+            Console.WriteLine(text);
+        }
+
+        public override void ShortAbout()
         {
             Console.WriteLine(text);
         }
