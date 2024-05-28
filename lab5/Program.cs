@@ -1,6 +1,7 @@
 ﻿using lab5.Base;
 using lab5.Command;
 using lab5.Iterator;
+using lab5.Visitor;
 
 Console.WriteLine("Task1\n");
 
@@ -96,6 +97,14 @@ var newText = new LightTextNode("some text for task 4");
 ClearContent();
 Console.WriteLine("Task5\n");
 
+var firstVisitor = new FirstVisitor();
+var secondVisitor = new SecondVisitor();
+
+titleHead.Accept(firstVisitor);
+textTitleHead.Accept(firstVisitor);
+
+titleHead.Accept(secondVisitor);
+textTitleHead.Accept(secondVisitor);
 
 ClearContent();
 

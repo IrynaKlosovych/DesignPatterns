@@ -1,5 +1,6 @@
 ﻿using lab5.Iterator;
 using lab5.State;
+using lab5.Visitor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace lab5.Base
         Paired,
         Unpaired
     }
-    public class LightElementNode : LightNode, IInnerLightHTML, ILightHTMLCollection, IVisibilityState
+    public class LightElementNode : LightNode, IInnerLightHTML, ILightHTMLCollection, IVisibilityState, IVisitable
     {
         private IVisibilityState state;
         protected List<LightNode> children;
@@ -155,6 +156,10 @@ namespace lab5.Base
         {
             base.OnStylesApplied();
             Console.WriteLine("NodeElement is on styles applied");
+        }
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }
