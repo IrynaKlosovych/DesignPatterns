@@ -1,11 +1,13 @@
-﻿using System;
+﻿using lab5.Iterator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using static System.Net.Mime.MediaTypeNames;
 
-namespace lab3.Composite
+namespace lab5.Base
 {
     public enum DisplayType
     {
@@ -17,7 +19,7 @@ namespace lab3.Composite
         Paired,
         Unpaired
     }
-    public class LightElementNode : LightNode, IInnerLightHTML
+    public class LightElementNode : LightNode, IInnerLightHTML, ILightHTMLCollection
     {
         protected List<LightNode> children;
         protected string TagName;
@@ -95,6 +97,21 @@ namespace lab3.Composite
                 InnerLightHTML();
                 Console.WriteLine($"</{TagName}>");
             }
+        }
+        public List<LightNode> GetChildren()
+        {
+            return children;
+        }
+        public IIterator GetIterator(IteratorType iterator)
+        {
+            if (iterator == IteratorType.Breadth)
+                return new BreadthFirstIterator(this);
+            return new DepthFirstIterator(this);
+        }
+
+        public override void ShortAbout()
+        {
+            Console.WriteLine(TagName);
         }
     }
 }

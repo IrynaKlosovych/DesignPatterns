@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace lab3.Composite
+namespace lab5.Base
 {
     public interface IInnerLightHTML
     {
